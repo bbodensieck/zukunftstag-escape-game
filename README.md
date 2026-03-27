@@ -1,73 +1,33 @@
-# React + TypeScript + Vite
+# 🔍 Zukunftstag Escape Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first detective-themed quiz game built with **Vite + React + TypeScript**.  
+Answer 8 free-text questions to collect all puzzle pieces and solve the case!
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**<https://bbodensieck.github.io/zukunftstag-escape-game/>**
 
-## React Compiler
+Scan the QR code below to open the game directly on your phone:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![QR Code](public/qrcode.png)
 
-## Expanding the ESLint configuration
+## 🕹️ How to play
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Read each question and type your answer into the text field.
+2. Your answer is correct if it **contains** the right keyword (case-insensitive).  
+   E.g. "eine Schlange", "Schlange", and "schlange" are all accepted for the keyword *Schlange*.
+3. Collect all 8 puzzle pieces to reveal the solution and solve the case!
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # start dev server
+npm run build    # production build → dist/
+npm run lint     # ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The site deploys automatically to GitHub Pages on every push to `main` via the workflow in `.github/workflows/deploy.yml`.  
+Enable it once under **Settings → Pages → Source: GitHub Actions**.
