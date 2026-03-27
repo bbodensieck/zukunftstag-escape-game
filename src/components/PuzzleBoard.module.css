@@ -1,0 +1,108 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2d3748;
+  border: 2px solid #4a5568;
+  border-radius: 10px;
+  font-size: 2rem;
+}
+
+.missingSlot {
+  background-color: #1a202c;
+  border: 2px dashed #4299e1;
+  position: relative;
+  overflow: hidden;
+}
+
+.missingSlot .emoji {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.6);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.missingSlot.filled .emoji {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.missingSlot.filled {
+  background-color: #2d3748;
+  border: 2px solid #48bb78;
+  box-shadow: 0 0 16px rgba(72, 187, 120, 0.4);
+}
+
+.emoji {
+  pointer-events: none;
+  user-select: none;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.successIcon {
+  font-size: 3rem;
+}
+
+.successText {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #68d391;
+  letter-spacing: 0.05em;
+}
+
+.successSubtext {
+  font-size: 1rem;
+  color: #a0aec0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
