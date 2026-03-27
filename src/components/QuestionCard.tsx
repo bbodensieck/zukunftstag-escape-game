@@ -1,36 +1,21 @@
 import type { Question } from '../data/quizData';
-import { AnswerButton } from './AnswerButton';
+import { TextAnswerInput } from './TextAnswerInput';
+import type { FeedbackState } from './TextAnswerInput';
 import styles from './QuestionCard.module.css';
 
 interface QuestionCardProps {
   question: Question;
-  selectedIndex: number | null;
-  onAnswer: (index: number) => void;
+  feedbackState: FeedbackState;
+  inputResetKey: number;
+  onAnswer: (userInput: string) => void;
   visible: boolean;
 }
 
-export function QuestionCard({ question, selectedIndex, onAnswer, visible }: QuestionCardProps) {
-  const getState = (index: number) => {
-    if (selectedIndex === null) return 'default';
-    if (index === question.correctIndex) return 'correct';
-    if (index === selectedIndex) return 'incorrect';
-    return 'disabled';
-  };
-
+export function QuestionCard({ question, feedbackState, inputResetKey, onAnswer, visible }: QuestionCardProps) {
   return (
     <div className={`${styles.card} ${visible ? styles.visible : styles.hidden}`}>
       <p className={styles.question}>{question.text}</p>
-      <div className={styles.options}>
-        {question.options.map((option, i) => (
-          <AnswerButton
-            key={i}
-            index={i}
-            text={option}
-            state={getState(i)}
-            onClick={() => onAnswer(i)}
-          />
-        ))}
-      </div>
+      <TextAnswerInput key={inputResetKey} feedbackState={feedbackState} onAnswer={onAnswer} />
     </div>
   );
 }
