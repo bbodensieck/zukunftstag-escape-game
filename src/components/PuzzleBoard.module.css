@@ -13,52 +13,27 @@
   margin: 0;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+.svgWrapper {
   width: 100%;
   max-width: 300px;
 }
 
-.cell {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2d3748;
-  border: 2px solid #4a5568;
-  border-radius: 10px;
-  font-size: 2rem;
+.puzzleSvg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.missingSlot {
-  background-color: #1a202c;
-  border: 2px dashed #4299e1;
-  position: relative;
-  overflow: hidden;
-}
-
-.missingSlot .emoji {
-  opacity: 0;
-  transform: translateY(-40px) scale(0.6);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.missingSlot.filled .emoji {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.missingSlot.filled {
-  background-color: #2d3748;
-  border: 2px solid #48bb78;
-  box-shadow: 0 0 16px rgba(72, 187, 120, 0.4);
-}
-
-.emoji {
-  pointer-events: none;
+.pieceText {
   user-select: none;
+  pointer-events: none;
+}
+
+/* Drop-in animation for the final missing piece */
+.dropIn {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dropIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .successMessage {
@@ -104,5 +79,16 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
