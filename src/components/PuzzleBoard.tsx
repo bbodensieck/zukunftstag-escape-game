@@ -159,16 +159,17 @@ export function PuzzleBoard({ animate }: PuzzleBoardProps) {
                 <g
                   key={`${r}-${c}`}
                   transform={`translate(${tx} ${ty})`}
-                  className={isMissing && pieceVisible ? styles.dropIn : undefined}
                   filter="url(#pieceShadow)"
                 >
-                  <path
-                    d={pathD}
-                    fill={isMissing ? COLOR_FINAL_FILL : COLOR_PIECE_FILL}
-                    stroke={isMissing ? COLOR_FINAL_STROKE : COLOR_PIECE_STROKE}
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                  />
+                  <g className={isMissing && pieceVisible ? styles.dropIn : undefined}>
+                    <path
+                      d={pathD}
+                      fill={isMissing ? COLOR_FINAL_FILL : COLOR_PIECE_FILL}
+                      stroke={isMissing ? COLOR_FINAL_STROKE : COLOR_PIECE_STROKE}
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    />
+                  </g>
                 </g>
               );
             }),
