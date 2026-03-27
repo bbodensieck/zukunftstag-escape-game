@@ -17,12 +17,7 @@ const CONNECTIONS: [number, number, number, number][][] = [
   [[1, -1, 0, 0],   [-1, 1, 0, 1],   [1, 0, 0, -1]],
 ];
 
-// Detective-themed emojis for each cell
-const PUZZLE_EMOJIS = [
-  ['🔍', '🗂️', '🖊️'],
-  ['🔦', '🕵️', '📋'],
-  ['🗝️', '👣', '⭐'],
-];
+const GRID_SIZE = 3;
 
 const MISSING_ROW = 2;
 const MISSING_COL = 2;
@@ -137,8 +132,8 @@ export function PuzzleBoard({ animate }: PuzzleBoardProps) {
             </filter>
           </defs>
 
-          {PUZZLE_EMOJIS.flatMap((row, r) =>
-            row.map((emoji, c) => {
+          {Array.from({ length: GRID_SIZE }, (_, r) =>
+            Array.from({ length: GRID_SIZE }, (_, c) => {
               const [tp, rg, bt, lt] = CONNECTIONS[r][c];
               const pathD = jigsawPath(tp, rg, bt, lt);
               const isMissing = r === MISSING_ROW && c === MISSING_COL;
@@ -174,16 +169,6 @@ export function PuzzleBoard({ animate }: PuzzleBoardProps) {
                     strokeWidth="1.5"
                     strokeLinejoin="round"
                   />
-                  <text
-                    x={CELL / 2}
-                    y={CELL / 2}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize={`${CELL * 0.36}px`}
-                    className={styles.pieceText}
-                  >
-                    {emoji}
-                  </text>
                 </g>
               );
             }),

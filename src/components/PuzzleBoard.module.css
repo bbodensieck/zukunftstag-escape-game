@@ -24,11 +24,6 @@
   display: block;
 }
 
-.pieceText {
-  user-select: none;
-  pointer-events: none;
-}
-
 /* Drop-in animation for the final missing piece */
 .dropIn {
   transform-box: fill-box;
