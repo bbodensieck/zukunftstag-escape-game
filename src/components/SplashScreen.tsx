@@ -8,7 +8,7 @@ export function SplashScreen({ onStart }: SplashScreenProps) {
   return (
     <div className={styles.wrapper}>
       <img
-        src="/blaues-juwel.png"
+        src="blaues-juwel.png"
         alt="Blaues Juwel"
         className={styles.image}
       />
