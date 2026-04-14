@@ -2,13 +2,12 @@ import { useState, useCallback } from 'react';
 import { questions } from '../data/quizData';
 import { ProgressBar } from './ProgressBar';
 import { QuestionCard } from './QuestionCard';
-import { PuzzleBoard } from './PuzzleBoard';
 import { SplashScreen } from './SplashScreen';
 import { VictoryScreen } from './VictoryScreen';
 import type { FeedbackState } from './TextAnswerInput';
 import styles from './QuizContainer.module.css';
 
-type Phase = 'splash' | 'question' | 'transitioning' | 'puzzle' | 'victory';
+type Phase = 'splash' | 'question' | 'transitioning' | 'victory';
 
 /** Fold German umlauts and normalise decimal separators so comparisons
  *  are accent-insensitive and accept "2.5" as well as "2,5".
@@ -33,7 +32,6 @@ export function QuizContainer() {
   const [inputResetKey, setInputResetKey] = useState(0);
   const [phase, setPhase] = useState<Phase>('splash');
   const [cardVisible, setCardVisible] = useState(true);
-  const [puzzleAnimate, setPuzzleAnimate] = useState(false);
 
   const isLastQuestion = currentIndex === questions.length - 1;
   const currentQuestion = questions[currentIndex];
@@ -85,7 +83,6 @@ export function QuizContainer() {
     setInputResetKey((k) => k + 1);
     setPhase('splash');
     setCardVisible(true);
-    setPuzzleAnimate(false);
   };
 
   const handleStart = () => {
@@ -100,7 +97,7 @@ export function QuizContainer() {
         </header>
       )}
 
-      {phase !== 'puzzle' && phase !== 'splash' && phase !== 'victory' && (
+      {phase !== 'splash' && phase !== 'victory' && (
         <ProgressBar current={currentIndex + 1} total={questions.length} />
       )}
 
@@ -109,7 +106,7 @@ export function QuizContainer() {
           <SplashScreen onStart={handleStart} />
         ) : phase === 'victory' ? (
           <VictoryScreen onRestart={handleRestart} />
-        ) : phase !== 'puzzle' ? (
+        ) : (
           <QuestionCard
             key={currentIndex}
             question={currentQuestion}
@@ -118,13 +115,6 @@ export function QuizContainer() {
             onAnswer={handleAnswer}
             visible={cardVisible}
           />
-        ) : (
-          <>
-            <PuzzleBoard animate={puzzleAnimate} />
-            <button className={styles.restartButton} onClick={handleRestart}>
-              🔄 Neu starten
-            </button>
-          </>
         )}
       </main>
     </div>
