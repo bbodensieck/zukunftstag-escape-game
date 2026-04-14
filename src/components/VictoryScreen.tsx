@@ -8,7 +8,7 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
   return (
     <div className={styles.wrapper}>
       <img
-        src="/festnahme.png"
+        src="festnahme.png"
         alt="Festnahme der Gangster"
         className={styles.image}
       />
