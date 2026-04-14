@@ -3,10 +3,12 @@ import { questions } from '../data/quizData';
 import { ProgressBar } from './ProgressBar';
 import { QuestionCard } from './QuestionCard';
 import { PuzzleBoard } from './PuzzleBoard';
+import { SplashScreen } from './SplashScreen';
+import { VictoryScreen } from './VictoryScreen';
 import type { FeedbackState } from './TextAnswerInput';
 import styles from './QuizContainer.module.css';
 
-type Phase = 'question' | 'transitioning' | 'puzzle';
+type Phase = 'splash' | 'question' | 'transitioning' | 'puzzle' | 'victory';
 
 /** Fold German umlauts and normalise decimal separators so comparisons
  *  are accent-insensitive and accept "2.5" as well as "2,5".
@@ -29,7 +31,7 @@ export function QuizContainer() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [feedbackState, setFeedbackState] = useState<FeedbackState>('idle');
   const [inputResetKey, setInputResetKey] = useState(0);
-  const [phase, setPhase] = useState<Phase>('question');
+  const [phase, setPhase] = useState<Phase>('splash');
   const [cardVisible, setCardVisible] = useState(true);
   const [puzzleAnimate, setPuzzleAnimate] = useState(false);
 
@@ -50,8 +52,7 @@ export function QuizContainer() {
           setTimeout(() => {
             setCardVisible(false);
             setTimeout(() => {
-              setPhase('puzzle');
-              setPuzzleAnimate(true);
+              setPhase('victory');
             }, 400);
           }, 1200);
         } else {
@@ -82,23 +83,33 @@ export function QuizContainer() {
     setCurrentIndex(0);
     setFeedbackState('idle');
     setInputResetKey((k) => k + 1);
-    setPhase('question');
+    setPhase('splash');
     setCardVisible(true);
     setPuzzleAnimate(false);
   };
 
+  const handleStart = () => {
+    setPhase('question');
+  };
+
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.badge}>🔍 Detektiv-Quiz</div>
-      </header>
+      {phase !== 'splash' && (
+        <header className={styles.header}>
+          <div className={styles.badge}>🔍 Detektiv-Quiz</div>
+        </header>
+      )}
 
-      {phase !== 'puzzle' && (
+      {phase !== 'puzzle' && phase !== 'splash' && phase !== 'victory' && (
         <ProgressBar current={currentIndex + 1} total={questions.length} />
       )}
 
       <main className={styles.main}>
-        {phase !== 'puzzle' ? (
+        {phase === 'splash' ? (
+          <SplashScreen onStart={handleStart} />
+        ) : phase === 'victory' ? (
+          <VictoryScreen onRestart={handleRestart} />
+        ) : phase !== 'puzzle' ? (
           <QuestionCard
             key={currentIndex}
             question={currentQuestion}
