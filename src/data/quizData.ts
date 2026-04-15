@@ -8,7 +8,7 @@ export interface Question {
 export const questions: Question[] = [
   {
     id: 1,
-    text: "Wie heißt die Meldende aus dem Landesmuseum mit Namen?",
+    text: "Wie heißt die Meldende aus dem Landesmuseum mit Nachnamen?",
     correctAnswer: "Jansen",
   },
   {
