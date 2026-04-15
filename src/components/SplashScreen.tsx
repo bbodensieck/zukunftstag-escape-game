@@ -13,7 +13,7 @@ export function SplashScreen({ onStart }: SplashScreenProps) {
         className={styles.image}
       />
       <button className={styles.startButton} onClick={onStart}>
-        Quiz starten
+        Löst das Rätsel
       </button>
     </div>
   );
