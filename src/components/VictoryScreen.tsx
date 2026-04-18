@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import styles from './VictoryScreen.module.css';
 
 interface VictoryScreenProps {
@@ -6,23 +5,6 @@ interface VictoryScreenProps {
 }
 
 export function VictoryScreen({ onRestart }: VictoryScreenProps) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    audio?.play().catch(() => {
-      // Autoplay may be blocked by the browser; silently ignore
-    });
-
-    return () => {
-      audio?.pause();
-      if (audio) {
-        audio.currentTime = 0;
-      }
-    };
-  }, []);
-
   return (
     <div className={styles.wrapper}>
       <img
@@ -36,8 +18,8 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
         <div className={styles.subtitle}>Die Gangster wurden gefasst!</div>
       </div>
       <audio
-        ref={audioRef}
         className={styles.audioPlayer}
+        autoPlay
         controls
         loop
         src="zukunftstag-song.mp3"
