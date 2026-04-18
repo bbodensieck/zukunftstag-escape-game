@@ -23,12 +23,12 @@ const MISSING_ROW = 2;
 const MISSING_COL = 2;
 
 // Piece colour palette
-const COLOR_PIECE_FILL   = '#2d3748';
-const COLOR_PIECE_STROKE = '#4a5568';
-const COLOR_SLOT_FILL    = '#1a202c';
-const COLOR_SLOT_STROKE  = '#4299e1';
-const COLOR_FINAL_FILL   = '#276749';
-const COLOR_FINAL_STROKE = '#52b788';
+const COLOR_PIECE_FILL = '#0f3f72';
+const COLOR_PIECE_STROKE = '#2f7fc3';
+const COLOR_SLOT_FILL = '#051c34';
+const COLOR_SLOT_STROKE = '#40c0ff';
+const COLOR_FINAL_FILL = '#0d4b74';
+const COLOR_FINAL_STROKE = '#f2ca3c';
 
 /**
  * Generate the SVG path for a single jigsaw piece.

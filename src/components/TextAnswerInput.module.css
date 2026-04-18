@@ -12,10 +12,10 @@
 .input {
   flex: 1;
   padding: 0.875rem 1rem;
-  background-color: #1a202c;
-  border: 2px solid #2d3748;
-  border-radius: 10px;
-  color: #e2e8f0;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
   font-size: 1rem;
   min-height: 56px;
   outline: none;
@@ -23,30 +23,30 @@
 }
 
 .input:focus {
-  border-color: #4299e1;
-  background-color: #2d3748;
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
 }
 
 .input.correct {
-  border-color: #48bb78;
-  background-color: rgba(72, 187, 120, 0.15);
-  color: #68d391;
+  border-color: var(--color-success);
+  background-color: rgba(80, 192, 140, 0.15);
+  color: var(--color-success);
 }
 
 .input.incorrect {
-  border-color: #fc8181;
-  background-color: rgba(252, 129, 129, 0.15);
-  color: #fc8181;
+  border-color: var(--color-error);
+  background-color: rgba(240, 109, 109, 0.15);
+  color: var(--color-error);
 }
 
 .submitButton {
   padding: 0 1.25rem;
   min-height: 56px;
   min-width: 56px;
-  background-color: #2d3748;
-  border: 2px solid #4299e1;
-  border-radius: 10px;
-  color: #63b3ed;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
   font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
@@ -54,8 +54,8 @@
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: #4299e1;
-  color: #fff;
+  background-color: var(--color-accent-strong);
+  color: var(--color-text);
 }
 
 .submitButton:active:not(:disabled) {
@@ -68,14 +68,14 @@
 }
 
 .feedbackCorrect {
-  color: #68d391;
+  color: var(--color-success);
   font-weight: 600;
   font-size: 1rem;
   margin: 0;
 }
 
 .feedbackIncorrect {
-  color: #fc8181;
+  color: var(--color-error);
   font-weight: 600;
   font-size: 1rem;
   margin: 0;
