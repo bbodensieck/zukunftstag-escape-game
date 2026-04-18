@@ -9,15 +9,18 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const audio = new Audio('zukunftstag-song.mp3');
-    audio.loop = true;
-    audioRef.current = audio;
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
+
     audio.play().catch(() => {
       // Autoplay may be blocked by the browser; silently ignore
     });
+
     return () => {
       audio.pause();
-      audio.src = '';
+      audio.currentTime = 0;
     };
   }, []);
 
@@ -33,6 +36,13 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
         <div className={styles.title}>Fall gelöst!</div>
         <div className={styles.subtitle}>Die Gangster wurden gefasst!</div>
       </div>
+      <audio
+        ref={audioRef}
+        className={styles.audioPlayer}
+        controls
+        loop
+        src="zukunftstag-song.mp3"
+      />
       <button className={styles.restartButton} onClick={onRestart}>
         🔄 Neu starten
       </button>
