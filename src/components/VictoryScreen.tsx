@@ -19,6 +19,7 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
       </div>
       <audio
         aria-label="Zukunftstag Song"
+        autoPlay
         className={styles.audioPlayer}
         controls
         loop
