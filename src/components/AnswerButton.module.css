@@ -4,10 +4,10 @@
   gap: 0.875rem;
   width: 100%;
   padding: 1rem 1.25rem;
-  background-color: #1a202c;
-  border: 2px solid #2d3748;
-  border-radius: 10px;
-  color: #e2e8f0;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
   font-size: 1rem;
   text-align: left;
   cursor: pointer;
@@ -20,21 +20,21 @@
 }
 
 .button.default:hover {
-  border-color: #4299e1;
-  background-color: #2d3748;
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
 }
 
 .button.correct {
-  border-color: #48bb78;
-  background-color: rgba(72, 187, 120, 0.15);
-  color: #68d391;
+  border-color: var(--color-success);
+  background-color: rgba(80, 192, 140, 0.15);
+  color: var(--color-success);
   cursor: default;
 }
 
 .button.incorrect {
-  border-color: #fc8181;
-  background-color: rgba(252, 129, 129, 0.15);
-  color: #fc8181;
+  border-color: var(--color-error);
+  background-color: rgba(240, 109, 109, 0.15);
+  color: var(--color-error);
   cursor: default;
 }
 
@@ -51,21 +51,21 @@
   width: 28px;
   height: 28px;
   min-width: 28px;
-  background-color: #2d3748;
+  background-color: var(--color-surface);
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #a0aec0;
+  color: var(--color-muted);
 }
 
 .button.correct .label {
-  background-color: rgba(72, 187, 120, 0.3);
-  color: #68d391;
+  background-color: rgba(80, 192, 140, 0.3);
+  color: var(--color-success);
 }
 
 .button.incorrect .label {
-  background-color: rgba(252, 129, 129, 0.3);
-  color: #fc8181;
+  background-color: rgba(240, 109, 109, 0.3);
+  color: var(--color-error);
 }
 
 .text {
