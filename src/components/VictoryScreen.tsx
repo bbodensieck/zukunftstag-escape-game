@@ -24,6 +24,7 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
         controls
         loop
         src="zukunftstag-song.mp3"
+        title="Zukunftstag Song"
       />
       <button className={styles.restartButton} onClick={onRestart}>
         🔄 Neu starten
