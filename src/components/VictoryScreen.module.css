@@ -42,6 +42,11 @@
   color: #a0aec0;
 }
 
+.audioPlayer {
+  width: 100%;
+  max-width: 360px;
+}
+
 .restartButton {
   padding: 0.875rem 2rem;
   background-color: #2d3748;
