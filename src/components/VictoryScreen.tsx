@@ -10,17 +10,16 @@ export function VictoryScreen({ onRestart }: VictoryScreenProps) {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
 
-    audio.play().catch(() => {
+    audio?.play().catch(() => {
       // Autoplay may be blocked by the browser; silently ignore
     });
 
     return () => {
-      audio.pause();
-      audio.currentTime = 0;
+      audio?.pause();
+      if (audio) {
+        audio.currentTime = 0;
+      }
     };
   }, []);
 
